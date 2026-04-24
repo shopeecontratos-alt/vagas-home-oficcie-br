@@ -5,190 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trabalho Remoto</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-
-body{
-  background:#0f172a;
-  color:#fff;
-}
-
-/* HERO */
-.hero{
-  background:linear-gradient(135deg,#ff6a00,#ff8c42);
-  padding:50px 20px;
-  text-align:center;
-}
-
-.logo{
-  width:90px;
-  height:90px;
-  object-fit:cover;
-  border-radius:20px;
-  margin-bottom:15px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.3);
-}
-
-/* CONTAINER */
-.container{
-  max-width:520px;
-  margin:auto;
-  padding:20px;
-}
-
-/* CARDS */
-.card{
-  background:#111827;
-  border-radius:14px;
-  padding:20px;
-  margin-top:15px;
-}
-
-.card-orange{
-  background:rgba(255,106,0,0.1);
-  border:1px solid rgba(255,106,0,0.4);
-  border-radius:14px;
-  padding:20px;
-  margin-top:15px;
-}
-
-button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:10px;
-  background:#ff6a00;
-  color:white;
-  font-weight:600;
-  margin-top:15px;
-  cursor:pointer;
-}
-
-.btn-dark{
-  background:#1f2937;
-}
-
-.highlight{
-  color:#ff6a00;
-}
-
+body{background:#0f172a;color:#fff;font-family:sans-serif;margin:0}
+.hero{background:linear-gradient(135deg,#ff6a00,#ff8c42);padding:40px;text-align:center}
+.container{max-width:500px;margin:auto;padding:20px}
+.card{background:#111827;padding:20px;border-radius:10px;margin-top:15px}
+button{width:100%;padding:15px;margin-top:10px;border:none;border-radius:8px;background:#ff6a00;color:#fff;font-weight:bold}
+.btn-dark{background:#1f2937}
 </style>
 </head>
 
 <body>
 
 <div class="hero">
-  <img src="SUA_LOGO_AQUI.png" class="logo">
-  <h1>Trabalhe de casa com atendimento online</h1>
-  <p>Processo seletivo rápido (leva menos de 1 minuto)</p>
+<h1>Trabalhe de casa</h1>
+<p>Responda e libere sua vaga</p>
 </div>
 
 <div class="container">
 
-<!-- PROGRESSO -->
-<div class="card">
-  <div style="background:#1f2937;border-radius:10px;overflow:hidden;">
-    <div id="barra" style="height:8px;width:0%;background:#ff6a00;"></div>
-  </div>
-</div>
-
-<!-- QUIZ -->
-<div id="quiz" class="card">
-  <h2>📋 Etapa 1 de 3</h2>
-  <p>Você tem acesso à internet?</p>
-  <button onclick="responder(1)">Sim</button>
-  <button class="btn-dark" onclick="responder(1)">Não</button>
+<div id="q1" class="card">
+<p>Você tem internet?</p>
+<button onclick="next(1)">Sim</button>
+<button class="btn-dark" onclick="next(1)">Não</button>
 </div>
 
 <div id="q2" class="card" style="display:none;">
-  <h2>📋 Etapa 2 de 3</h2>
-  <p>Você consegue responder mensagens diariamente?</p>
-  <button onclick="responder(2)">Sim</button>
-  <button class="btn-dark" onclick="responder(2)">Não</button>
+<p>Consegue responder mensagens?</p>
+<button onclick="next(2)">Sim</button>
+<button class="btn-dark" onclick="next(2)">Não</button>
 </div>
 
 <div id="q3" class="card" style="display:none;">
-  <h2>📋 Etapa 3 de 3</h2>
-  <p>Você quer trabalhar online?</p>
-  <button onclick="finalizar()">Sim</button>
-  <button class="btn-dark" onclick="finalizar()">Não</button>
+<p>Quer trabalhar online?</p>
+<button onclick="finish()">Sim</button>
+<button class="btn-dark" onclick="finish()">Não</button>
 </div>
 
-<!-- ANALISANDO -->
 <div id="loading" class="card" style="display:none;text-align:center;">
-  <h2>🔎 Analisando suas respostas...</h2>
-  <p>Aguarde...</p>
+<p>Analisando...</p>
 </div>
 
-<!-- APROVADO / CHECKOUT -->
-<div id="aprovado" style="display:none;">
+<div id="final" class="card" style="display:none;text-align:center;">
+<h2>🎉 Você foi aprovado!</h2>
+<p>Finalize o pagamento</p>
 
-  <div class="card-orange" style="text-align:center;">
-    <h1>🎉 VOCÊ FOI APROVADO!</h1>
-    <p>Finalize sua ativação abaixo</p>
-  </div>
+<h3>R$ 9,90</h3>
 
-  <div class="card">
-    <h2>🛍️ Acesso ao Material Completo</h2>
-    <p style="font-size:14px;color:#ccc;">Entrega imediata após pagamento</p>
+<button onclick="showPix()">Pagar com PIX</button>
 
-    <hr style="margin:15px 0;border-color:#333;">
+<div id="pix" style="display:none;margin-top:15px;">
+<p>Copie o PIX:</p>
 
-    <div style="display:flex;justify-content:space-between;">
-      <span>Produto</span>
-      <strong>Acesso digital</strong>
-    </div>
+<input id="pixKey" value="SUA_CHAVE_PIX_AQUI" style="width:100%;padding:10px">
 
-    <div style="display:flex;justify-content:space-between;margin-top:10px;">
-      <span>Entrega</span>
-      <strong style="color:#22c55e;">Imediata</strong>
-    </div>
-
-    <div style="display:flex;justify-content:space-between;margin-top:10px;">
-      <span>Pagamento</span>
-      <strong>PIX</strong>
-    </div>
-
-    <hr style="margin:15px 0;border-color:#333;">
-
-    <div style="display:flex;justify-content:space-between;font-size:18px;">
-      <strong>Total</strong>
-      <strong style="color:#ff6a00;">R$ 9,90</strong>
-    </div>
-
-    <button onclick="mostrarPix()">Finalizar compra</button>
-  </div>
-
-  <div class="card">
-    <h2>⭐ Avaliações</h2>
-    <p>⭐⭐⭐⭐⭐ 4.9 (1.284 avaliações)</p>
-    <p style="font-size:13px;color:#ccc;">"Muito fácil de começar!"</p>
-  </div>
-
-  <div class="card">
-    <h2>🔒 Compra Segura</h2>
-    <p style="font-size:13px;color:#ccc;">Pagamento protegido via PIX</p>
-  </div>
-
-  <div class="card" style="text-align:center;">
-    <h2>⏳ Reserva expira em:</h2>
-    <h1 id="timer">05:00</h1>
-  </div>
-
-  <!-- PIX -->
-  <div id="pixBox" class="card" style="display:none;text-align:center;">
-    <h2>💳 Pagar com PIX</h2>
-
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SUA_CHAVE_PIX_AQUI">
-
-    <input id="pixKey" value="SUA_CHAVE_PIX_AQUI"
-    style="width:100%;padding:10px;border:none;border-radius:8px;margin-top:10px;">
-
-    <button onclick="copiarPix()">Copiar código PIX</button>
-  </div>
+<button onclick="copyPix()">Copiar</button>
+</div>
 
 </div>
 
@@ -196,42 +68,34 @@ button{
 
 <script>
 
-let progresso = 0;
-
-function atualizarBarra(){
-  progresso += 33;
-  document.getElementById("barra").style.width = progresso + "%";
+function next(n){
+document.getElementById("q"+n).style.display="none";
+document.getElementById("q"+(n+1)).style.display="block";
 }
 
-function responder(etapa){
-  atualizarBarra();
+function finish(){
+document.getElementById("q3").style.display="none";
+document.getElementById("loading").style.display="block";
 
-  if(etapa==1){
-    document.getElementById("quiz").style.display="none";
-    document.getElementById("q2").style.display="block";
-  }
-
-  if(etapa==2){
-    document.getElementById("q2").style.display="none";
-    document.getElementById("q3").style.display="block";
-  }
+setTimeout(()=>{
+document.getElementById("loading").style.display="none";
+document.getElementById("final").style.display="block";
+},1500);
 }
 
-function finalizar(){
-  atualizarBarra();
-
-  document.getElementById("q3").style.display="none";
-  document.getElementById("loading").style.display="block";
-
-  setTimeout(()=>{
-    document.getElementById("loading").style.display="none";
-    document.getElementById("aprovado").style.display="block";
-    iniciarTimer();
-  },2000);
+function showPix(){
+document.getElementById("pix").style.display="block";
 }
 
-function mostrarPix(){
-  document.getElementById("pixBox").style.display="block";
+function copyPix(){
+let text = document.getElementById("pixKey").value;
+
+navigator.clipboard.writeText(text)
+.then(()=>alert("PIX copiado!"))
+.catch(()=>alert("Erro ao copiar"));
 }
 
-function
+</script>
+
+</body>
+</html>
