@@ -3,111 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vagas Home Office</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Trabalho Remoto • Atendimento Online</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-  background:linear-gradient(135deg,#ff6600,#ff3c00);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
+  background:#f8f8f8;
+  color:#222;
+  line-height:1.5;
 }
 
-.app{
-  width:100%;
-  max-width:420px;
-  background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,0.2);
+.container{
+  max-width:520px;
+  margin:auto;
+  padding:20px;
 }
 
-.header{
-  background:linear-gradient(135deg,#ff6600,#ff3c00);
-  color:#fff;
-  padding:15px;
+/* HERO */
+.hero{
   text-align:center;
-  font-weight:600;
+  padding:30px 10px;
 }
 
-.content{padding:15px;}
-
-.card{
-  animation:fade .3s;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;}
-}
-
-h2{font-size:18px;margin-bottom:10px;}
-p{font-size:14px;color:#555;margin-bottom:10px;}
-
-ul{padding-left:18px;margin-bottom:10px;}
-li{font-size:14px;margin-bottom:5px;}
-
-button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  background:linear-gradient(135deg,#ff6600,#ff3c00);
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-}
-
-input{
-  width:100%;
-  padding:12px;
-  margin-top:8px;
-  border-radius:8px;
-  border:1px solid #ddd;
-}
-
-.section{display:none;}
-
-.alerta{
-  background:#fff3cd;
-  padding:10px;
-  border-radius:8px;
-  font-size:13px;
-  margin:10px 0;
-}
-
-.badge{
-  background:#e6f7ee;
-  color:#00a86b;
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:12px;
-  display:inline-block;
+.hero h1{
+  font-size:26px;
   margin-bottom:10px;
 }
 
-.loading{
-  text-align:center;
-  display:none;
-  padding:15px;
+.hero p{
+  color:#555;
 }
 
-.toast{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#333;
-  color:#fff;
-  padding:10px 15px;
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:20px;
+  margin-top:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* LIST */
+ul{
+  padding-left:18px;
+}
+
+li{
+  margin-bottom:8px;
+}
+
+/* BOTÃO */
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:#ff6600;
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+/* ALERTA */
+.alerta{
+  background:#fff3cd;
+  padding:12px;
   border-radius:8px;
-  display:none;
+  font-size:13px;
+  margin-top:10px;
+}
+
+/* PROVA */
+.prova{
+  font-size:13px;
+  color:#777;
+  margin-top:10px;
+}
+
+/* FAQ */
+.faq h3{
+  font-size:14px;
+  margin-top:10px;
+}
+
+.faq p{
+  font-size:13px;
+  color:#555;
 }
 
 </style>
@@ -115,117 +103,106 @@ input{
 
 <body>
 
-<div class="app">
+<div class="container">
 
-<div class="header">💼 Vagas Home Office</div>
-
-<div class="content">
-
-<!-- HOME -->
-<div id="home" class="card">
-  <span class="badge">✔ Processo online</span>
-  <h2>Atendente de Chat</h2>
-  <p>Atue de casa respondendo clientes e auxiliando anúncios.</p>
-
-  <div class="alerta">
-  📌 Processo seletivo com orientação para novos participantes
-  </div>
-
-  <button onclick="ir('vaga')">Ver detalhes</button>
+<!-- HERO -->
+<div class="hero">
+  <h1>Trabalhe de casa com atendimento online</h1>
+  <p>Atividade simples com orientação passo a passo para iniciantes</p>
 </div>
 
-<!-- VAGA -->
-<div id="vaga" class="card section">
-  <h2>📱 Sobre a atividade</h2>
+<!-- BENEFÍCIOS -->
+<div class="card">
+  <h2>✔️ O que você vai fazer</h2>
+
+  <ul>
+    <li>Responder mensagens de clientes</li>
+    <li>Auxiliar no suporte básico</li>
+    <li>Organizar anúncios online</li>
+  </ul>
+
+  <div class="prova">
+    +1.000 pessoas já passaram pelo processo
+  </div>
+
+  <button onclick="scrollToOferta()">Quero participar</button>
+</div>
+
+<!-- COMO FUNCIONA -->
+<div class="card">
+  <h2>📌 Como funciona</h2>
+
+  <ul>
+    <li>Você recebe orientações iniciais</li>
+    <li>Aprende como executar as atividades</li>
+    <li>Inicia de forma organizada e passo a passo</li>
+  </ul>
+</div>
+
+<!-- QUEBRA DE OBJEÇÃO -->
+<div class="card">
+  <h2>❗ Para quem é</h2>
+
+  <ul>
+    <li>Iniciantes</li>
+    <li>Pessoas sem experiência</li>
+    <li>Quem quer trabalhar online</li>
+  </ul>
+</div>
+
+<!-- OFERTA -->
+<div id="oferta" class="card">
+  <h2>📚 Acesso ao material</h2>
 
   <p>
-  Você atuará no suporte ao cliente e organização de anúncios online.
+  Para iniciar, você terá acesso ao material com:
   </p>
 
   <ul>
-    <li>Responder mensagens</li>
-    <li>Auxiliar clientes</li>
-    <li>Publicar anúncios</li>
+    <li>Passo a passo completo</li>
+    <li>Orientações práticas</li>
+    <li>Acesso às atividades</li>
   </ul>
 
-  <button onclick="ir('form')">Participar do processo</button>
-</div>
-
-<!-- FORM -->
-<div id="form" class="card section">
-  <h2>Cadastro</h2>
-
-  <input id="nome" placeholder="Nome completo">
-  <input id="email" placeholder="Email">
-
-  <button onclick="validar()">Continuar</button>
-</div>
-
-<!-- PAGAMENTO -->
-<div id="pagamento" class="card section">
-  <h2>Etapa final</h2>
-
-  <p>
-  Para continuar, disponibilizamos um material de apoio com orientações,
-  acesso às atividades e passo a passo.
-  </p>
-
   <div class="alerta">
-  📌 Indicado para quem está iniciando
+  📌 Indicado para novos participantes
   </div>
 
-  <p><strong>Valor do material: R$ 9,90</strong></p>
+  <h2 style="margin-top:10px;">R$ 9,90</h2>
 
-  <button onclick="pagar()">Acessar material</button>
+  <button onclick="pagar()">Quero acessar agora</button>
 </div>
 
-<!-- SUCESSO -->
-<div id="sucesso" class="card section">
-  <h2>✅ Cadastro concluído</h2>
-  <p>Você receberá as próximas instruções no email.</p>
+<!-- GARANTIA -->
+<div class="card">
+  <h2>🔒 Segurança</h2>
+  <p>Pagamento seguro e acesso liberado após confirmação.</p>
 </div>
 
-<div class="loading" id="loading">⏳ Processando...</div>
+<!-- FAQ -->
+<div class="card faq">
+  <h2>❓ Dúvidas</h2>
 
+  <h3>Precisa de experiência?</h3>
+  <p>Não, o material ensina o processo.</p>
+
+  <h3>Quando começo?</h3>
+  <p>Após acessar o conteúdo.</p>
+
+  <h3>É obrigatório?</h3>
+  <p>Recomendado para iniciar corretamente.</p>
 </div>
 
 </div>
-
-<div class="toast" id="toast"></div>
 
 <script>
 
-function ir(id){
-  document.querySelectorAll('.card').forEach(e=>e.style.display='none');
-  document.getElementById(id).style.display='block';
-}
-
-function toast(msg){
-  let t=document.getElementById('toast');
-  t.innerText=msg;
-  t.style.display='block';
-  setTimeout(()=>t.style.display='none',2000);
-}
-
-function validar(){
-  let nome=document.getElementById('nome').value;
-  let email=document.getElementById('email').value;
-
-  if(!nome || !email){
-    toast("Preencha os dados");
-    return;
-  }
-
-  ir('pagamento');
+function scrollToOferta(){
+  document.getElementById("oferta").scrollIntoView({behavior:"smooth"});
 }
 
 function pagar(){
-  document.getElementById('loading').style.display='block';
-
-  setTimeout(()=>{
-    document.getElementById('loading').style.display='none';
-    ir('sucesso');
-  },1500);
+  window.location.href = "https://mpago.la/SEU_LINK";
 }
 
 </script>
