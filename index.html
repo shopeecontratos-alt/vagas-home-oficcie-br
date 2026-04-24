@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Trabalho Remoto</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -17,21 +16,20 @@ body{
   color:#fff;
 }
 
-/* HERO LARANJA */
+/* HERO */
 .hero{
   background:linear-gradient(135deg,#ff6a00,#ff8c42);
   padding:50px 20px;
   text-align:center;
 }
 
-.hero h1{
-  font-size:26px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  font-size:14px;
-  opacity:0.9;
+.logo{
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:20px;
+  margin-bottom:15px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
 }
 
 /* CONTAINER */
@@ -41,7 +39,7 @@ body{
   padding:20px;
 }
 
-/* CARD ESCURO */
+/* CARDS */
 .card{
   background:#111827;
   border-radius:14px;
@@ -49,7 +47,6 @@ body{
   margin-top:15px;
 }
 
-/* CARD LARANJA SUAVE */
 .card-orange{
   background:rgba(255,106,0,0.1);
   border:1px solid rgba(255,106,0,0.4);
@@ -58,11 +55,6 @@ body{
   margin-top:15px;
 }
 
-/* LIST */
-ul{padding-left:18px;}
-li{margin-bottom:8px;}
-
-/* BOTÃO FORTE */
 button{
   width:100%;
   padding:15px;
@@ -73,37 +65,14 @@ button{
   font-weight:600;
   margin-top:15px;
   cursor:pointer;
-  font-size:15px;
 }
 
-button:hover{
-  background:#e65c00;
-}
-
-/* BOTÃO ESCURO */
 .btn-dark{
   background:#1f2937;
 }
 
-.btn-dark:hover{
-  background:#111827;
-}
-
-/* DESTAQUE */
 .highlight{
-  color:#ff8c42;
-  font-weight:600;
-}
-
-/* FAQ */
-.faq h3{
-  margin-top:10px;
-  font-size:14px;
-}
-
-.faq p{
-  font-size:13px;
-  color:#ccc;
+  color:#ff6a00;
 }
 
 </style>
@@ -111,100 +80,158 @@ button:hover{
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
+  <img src="SUA_LOGO_AQUI.png" class="logo">
   <h1>Trabalhe de casa com atendimento online</h1>
-  <p>Atividade simples com orientação passo a passo</p>
+  <p>Processo seletivo rápido (leva menos de 1 minuto)</p>
 </div>
 
 <div class="container">
 
-<!-- BLOCO 1 -->
+<!-- PROGRESSO -->
 <div class="card">
-  <h2>📱 O que você vai fazer</h2>
-
-  <ul>
-    <li>Responder mensagens</li>
-    <li>Suporte ao cliente</li>
-    <li>Organizar anúncios</li>
-  </ul>
-
-  <button onclick="scrollToOferta()">Quero participar</button>
+  <div style="background:#1f2937;border-radius:10px;overflow:hidden;">
+    <div id="barra" style="height:8px;width:0%;background:#ff6a00;"></div>
+  </div>
 </div>
 
-<!-- BLOCO 2 LARANJA -->
-<div class="card-orange">
-  <h2>📌 Como funciona</h2>
-
-  <ul>
-    <li>Processo online simples</li>
-    <li>Orientação inicial</li>
-    <li>Execução guiada</li>
-  </ul>
+<!-- QUIZ -->
+<div id="quiz" class="card">
+  <h2>📋 Etapa 1 de 3</h2>
+  <p>Você tem acesso à internet?</p>
+  <button onclick="responder(1)">Sim</button>
+  <button class="btn-dark" onclick="responder(1)">Não</button>
 </div>
 
-<!-- BLOCO 3 -->
-<div class="card">
-  <h2>✔️ Para quem é</h2>
-
-  <ul>
-    <li>Iniciantes</li>
-    <li>Sem experiência</li>
-    <li>Quer trabalhar online</li>
-  </ul>
-
-  <button class="btn-dark" onclick="scrollToOferta()">Continuar</button>
+<div id="q2" class="card" style="display:none;">
+  <h2>📋 Etapa 2 de 3</h2>
+  <p>Você consegue responder mensagens diariamente?</p>
+  <button onclick="responder(2)">Sim</button>
+  <button class="btn-dark" onclick="responder(2)">Não</button>
 </div>
 
-<!-- OFERTA (MAIS LARANJA) -->
-<div id="oferta" class="card-orange">
-  <h2>📚 Acesso ao material</h2>
-
-  <p>
-  Conteúdo completo com orientações e passo a passo:
-  </p>
-
-  <ul>
-    <li>Guia completo</li>
-    <li>Atividades iniciais</li>
-    <li>Estrutura pronta</li>
-  </ul>
-
-  <h2 class="highlight">R$ 9,90</h2>
-
-  <button onclick="pagar()">Quero começar agora</button>
+<div id="q3" class="card" style="display:none;">
+  <h2>📋 Etapa 3 de 3</h2>
+  <p>Você quer trabalhar online?</p>
+  <button onclick="finalizar()">Sim</button>
+  <button class="btn-dark" onclick="finalizar()">Não</button>
 </div>
 
-<!-- SEGURANÇA -->
-<div class="card">
-  <h2>🔒 Segurança</h2>
-  <p>Pagamento seguro com liberação após confirmação.</p>
+<!-- ANALISANDO -->
+<div id="loading" class="card" style="display:none;text-align:center;">
+  <h2>🔎 Analisando suas respostas...</h2>
+  <p>Aguarde...</p>
 </div>
 
-<!-- FAQ -->
-<div class="card faq">
-  <h2>❓ Dúvidas</h2>
+<!-- APROVADO / CHECKOUT -->
+<div id="aprovado" style="display:none;">
 
-  <h3>Precisa experiência?</h3>
-  <p>Não, o material ensina.</p>
+  <div class="card-orange" style="text-align:center;">
+    <h1>🎉 VOCÊ FOI APROVADO!</h1>
+    <p>Finalize sua ativação abaixo</p>
+  </div>
 
-  <h3>Quando começo?</h3>
-  <p>Após acessar o conteúdo.</p>
+  <div class="card">
+    <h2>🛍️ Acesso ao Material Completo</h2>
+    <p style="font-size:14px;color:#ccc;">Entrega imediata após pagamento</p>
+
+    <hr style="margin:15px 0;border-color:#333;">
+
+    <div style="display:flex;justify-content:space-between;">
+      <span>Produto</span>
+      <strong>Acesso digital</strong>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:10px;">
+      <span>Entrega</span>
+      <strong style="color:#22c55e;">Imediata</strong>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:10px;">
+      <span>Pagamento</span>
+      <strong>PIX</strong>
+    </div>
+
+    <hr style="margin:15px 0;border-color:#333;">
+
+    <div style="display:flex;justify-content:space-between;font-size:18px;">
+      <strong>Total</strong>
+      <strong style="color:#ff6a00;">R$ 9,90</strong>
+    </div>
+
+    <button onclick="mostrarPix()">Finalizar compra</button>
+  </div>
+
+  <div class="card">
+    <h2>⭐ Avaliações</h2>
+    <p>⭐⭐⭐⭐⭐ 4.9 (1.284 avaliações)</p>
+    <p style="font-size:13px;color:#ccc;">"Muito fácil de começar!"</p>
+  </div>
+
+  <div class="card">
+    <h2>🔒 Compra Segura</h2>
+    <p style="font-size:13px;color:#ccc;">Pagamento protegido via PIX</p>
+  </div>
+
+  <div class="card" style="text-align:center;">
+    <h2>⏳ Reserva expira em:</h2>
+    <h1 id="timer">05:00</h1>
+  </div>
+
+  <!-- PIX -->
+  <div id="pixBox" class="card" style="display:none;text-align:center;">
+    <h2>💳 Pagar com PIX</h2>
+
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SUA_CHAVE_PIX_AQUI">
+
+    <input id="pixKey" value="SUA_CHAVE_PIX_AQUI"
+    style="width:100%;padding:10px;border:none;border-radius:8px;margin-top:10px;">
+
+    <button onclick="copiarPix()">Copiar código PIX</button>
+  </div>
+
 </div>
 
 </div>
 
 <script>
 
-function scrollToOferta(){
-  document.getElementById("oferta").scrollIntoView({behavior:"smooth"});
+let progresso = 0;
+
+function atualizarBarra(){
+  progresso += 33;
+  document.getElementById("barra").style.width = progresso + "%";
 }
 
-function pagar(){
-  window.location.href = "https://mpago.la/SEU_LINK";
+function responder(etapa){
+  atualizarBarra();
+
+  if(etapa==1){
+    document.getElementById("quiz").style.display="none";
+    document.getElementById("q2").style.display="block";
+  }
+
+  if(etapa==2){
+    document.getElementById("q2").style.display="none";
+    document.getElementById("q3").style.display="block";
+  }
 }
 
-</script>
+function finalizar(){
+  atualizarBarra();
 
-</body>
-</html>
+  document.getElementById("q3").style.display="none";
+  document.getElementById("loading").style.display="block";
+
+  setTimeout(()=>{
+    document.getElementById("loading").style.display="none";
+    document.getElementById("aprovado").style.display="block";
+    iniciarTimer();
+  },2000);
+}
+
+function mostrarPix(){
+  document.getElementById("pixBox").style.display="block";
+}
+
+function
