@@ -4,20 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Trabalho Remoto • Atendimento Online</title>
+<title>Trabalho Remoto</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
 body{
-  background:#f8f8f8;
-  color:#222;
-  line-height:1.5;
+  background:#0f172a;
+  color:#e5e7eb;
 }
 
+/* HEADER */
+.header{
+  background:linear-gradient(135deg,#ff6a00,#ff8c42);
+  padding:20px;
+  text-align:center;
+  font-weight:600;
+  font-size:18px;
+}
+
+/* CONTAINER */
 .container{
   max-width:520px;
   margin:auto;
@@ -27,7 +36,7 @@ body{
 /* HERO */
 .hero{
   text-align:center;
-  padding:30px 10px;
+  margin-bottom:15px;
 }
 
 .hero h1{
@@ -36,55 +45,69 @@ body{
 }
 
 .hero p{
-  color:#555;
+  color:#94a3b8;
 }
 
 /* CARD */
 .card{
-  background:#fff;
+  background:#111827;
   border-radius:14px;
   padding:20px;
   margin-top:15px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  border-left:4px solid #ff6a00;
 }
 
 /* LIST */
-ul{
-  padding-left:18px;
-}
-
-li{
-  margin-bottom:8px;
-}
+ul{padding-left:18px;}
+li{margin-bottom:8px;}
 
 /* BOTÃO */
 button{
   width:100%;
-  padding:16px;
+  padding:15px;
   border:none;
-  border-radius:12px;
-  background:#ff6600;
+  border-radius:10px;
+  background:linear-gradient(135deg,#ff6a00,#ff8c42);
   color:white;
-  font-size:16px;
   font-weight:600;
   margin-top:15px;
   cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover{
+  transform:scale(1.03);
 }
 
 /* ALERTA */
 .alerta{
-  background:#fff3cd;
+  background:rgba(255,106,0,0.15);
+  border:1px solid rgba(255,106,0,0.4);
   padding:12px;
   border-radius:8px;
   font-size:13px;
   margin-top:10px;
+  color:#ffb37a;
 }
 
 /* PROVA */
 .prova{
   font-size:13px;
-  color:#777;
+  color:#94a3b8;
   margin-top:10px;
+}
+
+/* DESTAQUE */
+.highlight{
+  color:#ff8c42;
+  font-weight:600;
+}
+
+/* DIVISOR */
+.divisor{
+  height:2px;
+  background:linear-gradient(to right,#ff6a00,transparent);
+  margin:15px 0;
 }
 
 /* FAQ */
@@ -95,7 +118,7 @@ button{
 
 .faq p{
   font-size:13px;
-  color:#555;
+  color:#94a3b8;
 }
 
 </style>
@@ -103,51 +126,61 @@ button{
 
 <body>
 
+<div class="header">
+💼 Vagas Home Office
+</div>
+
 <div class="container">
 
 <!-- HERO -->
 <div class="hero">
   <h1>Trabalhe de casa com atendimento online</h1>
-  <p>Atividade simples com orientação passo a passo para iniciantes</p>
+  <p>Atividade simples com orientação passo a passo</p>
 </div>
 
-<!-- BENEFÍCIOS -->
+<div class="divisor"></div>
+
+<!-- BLOCO 1 -->
 <div class="card">
-  <h2>✔️ O que você vai fazer</h2>
+  <h2>📱 O que você vai fazer</h2>
 
   <ul>
     <li>Responder mensagens de clientes</li>
-    <li>Auxiliar no suporte básico</li>
-    <li>Organizar anúncios online</li>
+    <li>Auxiliar no suporte</li>
+    <li>Organizar anúncios</li>
   </ul>
 
   <div class="prova">
-    +1.000 pessoas já passaram pelo processo
+    +1.000 pessoas já participaram
   </div>
 
   <button onclick="scrollToOferta()">Quero participar</button>
 </div>
 
-<!-- COMO FUNCIONA -->
+<!-- BLOCO 2 -->
 <div class="card">
   <h2>📌 Como funciona</h2>
 
   <ul>
-    <li>Você recebe orientações iniciais</li>
-    <li>Aprende como executar as atividades</li>
-    <li>Inicia de forma organizada e passo a passo</li>
+    <li>Processo online simples</li>
+    <li>Orientação inicial</li>
+    <li>Execução passo a passo</li>
   </ul>
 </div>
 
-<!-- QUEBRA DE OBJEÇÃO -->
+<!-- BLOCO 3 -->
 <div class="card">
-  <h2>❗ Para quem é</h2>
+  <h2>✔️ Para quem é</h2>
 
   <ul>
     <li>Iniciantes</li>
-    <li>Pessoas sem experiência</li>
-    <li>Quem quer trabalhar online</li>
+    <li>Sem experiência</li>
+    <li>Quer trabalhar online</li>
   </ul>
+
+  <div class="alerta">
+  📌 Inclui etapa de orientação inicial
+  </div>
 </div>
 
 <!-- OFERTA -->
@@ -155,28 +188,28 @@ button{
   <h2>📚 Acesso ao material</h2>
 
   <p>
-  Para iniciar, você terá acesso ao material com:
+  Você terá acesso ao conteúdo com:
   </p>
 
   <ul>
     <li>Passo a passo completo</li>
     <li>Orientações práticas</li>
-    <li>Acesso às atividades</li>
+    <li>Atividades iniciais</li>
   </ul>
 
   <div class="alerta">
-  📌 Indicado para novos participantes
+  📌 Recomendado para iniciantes
   </div>
 
-  <h2 style="margin-top:10px;">R$ 9,90</h2>
+  <h2 class="highlight">R$ 9,90</h2>
 
-  <button onclick="pagar()">Quero acessar agora</button>
+  <button onclick="pagar()">Quero começar agora</button>
 </div>
 
-<!-- GARANTIA -->
+<!-- SEGURANÇA -->
 <div class="card">
   <h2>🔒 Segurança</h2>
-  <p>Pagamento seguro e acesso liberado após confirmação.</p>
+  <p>Pagamento seguro e liberação após confirmação.</p>
 </div>
 
 <!-- FAQ -->
@@ -184,7 +217,7 @@ button{
   <h2>❓ Dúvidas</h2>
 
   <h3>Precisa de experiência?</h3>
-  <p>Não, o material ensina o processo.</p>
+  <p>Não, o material ensina.</p>
 
   <h3>Quando começo?</h3>
   <p>Após acessar o conteúdo.</p>
