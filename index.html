@@ -3,96 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trabalho Remoto</title>
+
+<title>Processo Seletivo</title>
 
 <style>
-body{background:#0f172a;color:#fff;font-family:sans-serif;margin:0}
-.hero{background:linear-gradient(135deg,#ff6a00,#ff8c42);padding:40px;text-align:center}
-.container{max-width:500px;margin:auto;padding:20px}
-.card{background:#111827;padding:20px;border-radius:10px;margin-top:15px}
-button{width:100%;padding:15px;margin-top:10px;border:none;border-radius:8px;background:#ff6a00;color:#fff;font-weight:bold}
-.btn-dark{background:#1f2937}
+body{background:#0b0f1a;color:#fff;font-family:sans-serif;margin:0}
+.container{max-width:480px;margin:auto;padding:20px}
+.card{background:#111827;padding:20px;border-radius:12px;margin-top:15px}
+button{width:100%;padding:14px;margin-top:10px;border:none;border-radius:10px;background:#ff6a00;color:#fff}
+input{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:none}
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-<h1>Trabalhe de casa</h1>
-<p>Responda e libere sua vaga</p>
-</div>
-
 <div class="container">
 
-<div id="q1" class="card">
-<p>Você tem internet?</p>
-<button onclick="next(1)">Sim</button>
-<button class="btn-dark" onclick="next(1)">Não</button>
+<!-- CAPTURA LEAD -->
+<div id="lead" class="card">
+<h2>Antes de começar</h2>
+<p>Informe seus dados para continuar:</p>
+
+<input id="nome" placeholder="Seu nome">
+<input id="contato" placeholder="WhatsApp ou Email">
+
+<button onclick="salvarLead()">Continuar</button>
 </div>
 
-<div id="q2" class="card" style="display:none;">
-<p>Consegue responder mensagens?</p>
-<button onclick="next(2)">Sim</button>
-<button class="btn-dark" onclick="next(2)">Não</button>
+<!-- QUIZ -->
+<div id="quiz" class="card" style="display:none;">
+<h2 id="saudacao"></h2>
+<p>Você tem acesso à internet?</p>
+
+<button onclick="responder('sim')">Sim</button>
+<button onclick="responder('nao')">Não</button>
 </div>
 
-<div id="q3" class="card" style="display:none;">
-<p>Quer trabalhar online?</p>
-<button onclick="finish()">Sim</button>
-<button class="btn-dark" onclick="finish()">Não</button>
-</div>
+<!-- RESULTADO -->
+<div id="final" class="card" style="display:none;">
+<h2 id="msgFinal"></h2>
 
-<div id="loading" class="card" style="display:none;text-align:center;">
-<p>Analisando...</p>
-</div>
+<p id="perfil"></p>
 
-<div id="final" class="card" style="display:none;text-align:center;">
-<h2>🎉 Você foi aprovado!</h2>
-<p>Finalize o pagamento</p>
-
-<h3>R$ 9,90</h3>
-
-<button onclick="showPix()">Pagar com PIX</button>
-
-<div id="pix" style="display:none;margin-top:15px;">
-<p>Copie o PIX:</p>
-
-<input id="pixKey" value="SUA_CHAVE_PIX_AQUI" style="width:100%;padding:10px">
-
-<button onclick="copyPix()">Copiar</button>
-</div>
-
+<button onclick="whats()">Continuar pelo WhatsApp</button>
 </div>
 
 </div>
 
 <script>
 
-function next(n){
-document.getElementById("q"+n).style.display="none";
-document.getElementById("q"+(n+1)).style.display="block";
+let respostas=[];
+
+function salvarLead(){
+  let nome=document.getElementById("nome").value;
+  let contato=document.getElementById("contato").value;
+
+  if(!nome || !contato){
+    alert("Preencha os campos");
+    return;
+  }
+
+  localStorage.setItem("nome",nome);
+  localStorage.setItem("contato",contato);
+
+  document.getElementById("lead").style.display="none";
+  document.getElementById("quiz").style.display="block";
+
+  document.getElementById("saudacao").innerText="Olá, "+nome;
 }
 
-function finish(){
-document.getElementById("q3").style.display="none";
-document.getElementById("loading").style.display="block";
+function responder(resp){
+  respostas.push(resp);
 
-setTimeout(()=>{
-document.getElementById("loading").style.display="none";
-document.getElementById("final").style.display="block";
-},1500);
+  if(respostas.length>=2){
+    mostrarResultado();
+  }
 }
 
-function showPix(){
-document.getElementById("pix").style.display="block";
+function mostrarResultado(){
+  document.getElementById("quiz").style.display="none";
+  document.getElementById("final").style.display="block";
+
+  let nome=localStorage.getItem("nome");
+
+  document.getElementById("msgFinal").innerText=
+  nome+", seu perfil foi analisado";
+
+  document.getElementById("perfil").innerText=
+  "Você demonstrou interesse e isso é positivo para iniciar.";
 }
 
-function copyPix(){
-let text = document.getElementById("pixKey").value;
+function whats(){
+  let nome=localStorage.getItem("nome");
+  let contato=localStorage.getItem("contato");
 
-navigator.clipboard.writeText(text)
-.then(()=>alert("PIX copiado!"))
-.catch(()=>alert("Erro ao copiar"));
+  let msg="Olá, sou "+nome+" e finalizei o processo.";
+
+  window.open("https://wa.me/5599999999999?text="+encodeURIComponent(msg));
 }
 
 </script>
