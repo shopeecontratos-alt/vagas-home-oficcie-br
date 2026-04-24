@@ -1,17 +1,74 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Processo Seletivo</title>
+<title>Trabalhe de Casa</title>
 
 <style>
-body{background:#0b0f1a;color:#fff;font-family:sans-serif;margin:0}
-.container{max-width:480px;margin:auto;padding:20px}
-.card{background:#111827;padding:20px;border-radius:12px;margin-top:15px}
-button{width:100%;padding:14px;margin-top:10px;border:none;border-radius:10px;background:#ff6a00;color:#fff}
-input{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:none}
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#f5f6fa;
+  color:#333;
+}
+
+.container {
+  max-width:500px;
+  margin:auto;
+  padding:20px;
+}
+
+.card {
+  background:#fff;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1 {
+  font-size:22px;
+}
+
+button {
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:8px;
+  background:#ff6a00;
+  color:#fff;
+  font-size:16px;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+.progress {
+  height:8px;
+  background:#eee;
+  border-radius:5px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+
+.progress-bar {
+  height:100%;
+  width:20%;
+  background:#ff6a00;
+}
+
+.hidden { display:none; }
+
+.small {
+  font-size:13px;
+  color:#777;
+}
+
+.price {
+  font-size:28px;
+  font-weight:bold;
+  color:#ff6a00;
+}
+
 </style>
 </head>
 
@@ -19,90 +76,15 @@ input{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:none}
 
 <div class="container">
 
-<!-- CAPTURA LEAD -->
-<div id="lead" class="card">
-<h2>Antes de começar</h2>
-<p>Informe seus dados para continuar:</p>
+<!-- HOME -->
+<div id="home" class="card">
+<h1>Trabalhe Respondendo Mensagens Pelo Celular</h1>
+<p>Sem experiência • 100% online • Comece do zero</p>
 
-<input id="nome" placeholder="Seu nome">
-<input id="contato" placeholder="WhatsApp ou Email">
+<p class="small">Algumas pessoas já estão começando com menos de 1h por dia</p>
 
-<button onclick="salvarLead()">Continuar</button>
+<button onclick="startQuiz()">Ver se tenho perfil</button>
 </div>
 
 <!-- QUIZ -->
-<div id="quiz" class="card" style="display:none;">
-<h2 id="saudacao"></h2>
-<p>Você tem acesso à internet?</p>
-
-<button onclick="responder('sim')">Sim</button>
-<button onclick="responder('nao')">Não</button>
-</div>
-
-<!-- RESULTADO -->
-<div id="final" class="card" style="display:none;">
-<h2 id="msgFinal"></h2>
-
-<p id="perfil"></p>
-
-<button onclick="whats()">Continuar pelo WhatsApp</button>
-</div>
-
-</div>
-
-<script>
-
-let respostas=[];
-
-function salvarLead(){
-  let nome=document.getElementById("nome").value;
-  let contato=document.getElementById("contato").value;
-
-  if(!nome || !contato){
-    alert("Preencha os campos");
-    return;
-  }
-
-  localStorage.setItem("nome",nome);
-  localStorage.setItem("contato",contato);
-
-  document.getElementById("lead").style.display="none";
-  document.getElementById("quiz").style.display="block";
-
-  document.getElementById("saudacao").innerText="Olá, "+nome;
-}
-
-function responder(resp){
-  respostas.push(resp);
-
-  if(respostas.length>=2){
-    mostrarResultado();
-  }
-}
-
-function mostrarResultado(){
-  document.getElementById("quiz").style.display="none";
-  document.getElementById("final").style.display="block";
-
-  let nome=localStorage.getItem("nome");
-
-  document.getElementById("msgFinal").innerText=
-  nome+", seu perfil foi analisado";
-
-  document.getElementById("perfil").innerText=
-  "Você demonstrou interesse e isso é positivo para iniciar.";
-}
-
-function whats(){
-  let nome=localStorage.getItem("nome");
-  let contato=localStorage.getItem("contato");
-
-  let msg="Olá, sou "+nome+" e finalizei o processo.";
-
-  window.open("https://wa.me/5599999999999?text="+encodeURIComponent(msg));
-}
-
-</script>
-
-</body>
-</html>
+<div id="quiz" class="card hidden
