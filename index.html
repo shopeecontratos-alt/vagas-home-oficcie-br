@@ -14,16 +14,24 @@
 
 body{
   background:#0f172a;
-  color:#e5e7eb;
+  color:#fff;
 }
 
-/* HEADER */
-.header{
+/* HERO LARANJA */
+.hero{
   background:linear-gradient(135deg,#ff6a00,#ff8c42);
-  padding:20px;
+  padding:50px 20px;
   text-align:center;
-  font-weight:600;
-  font-size:18px;
+}
+
+.hero h1{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:14px;
+  opacity:0.9;
 }
 
 /* CONTAINER */
@@ -33,68 +41,52 @@ body{
   padding:20px;
 }
 
-/* HERO */
-.hero{
-  text-align:center;
-  margin-bottom:15px;
-}
-
-.hero h1{
-  font-size:26px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  color:#94a3b8;
-}
-
-/* CARD */
+/* CARD ESCURO */
 .card{
   background:#111827;
   border-radius:14px;
   padding:20px;
   margin-top:15px;
-  border-left:4px solid #ff6a00;
+}
+
+/* CARD LARANJA SUAVE */
+.card-orange{
+  background:rgba(255,106,0,0.1);
+  border:1px solid rgba(255,106,0,0.4);
+  border-radius:14px;
+  padding:20px;
+  margin-top:15px;
 }
 
 /* LIST */
 ul{padding-left:18px;}
 li{margin-bottom:8px;}
 
-/* BOTÃO */
+/* BOTÃO FORTE */
 button{
   width:100%;
   padding:15px;
   border:none;
   border-radius:10px;
-  background:linear-gradient(135deg,#ff6a00,#ff8c42);
+  background:#ff6a00;
   color:white;
   font-weight:600;
   margin-top:15px;
   cursor:pointer;
-  transition:0.2s;
+  font-size:15px;
 }
 
 button:hover{
-  transform:scale(1.03);
+  background:#e65c00;
 }
 
-/* ALERTA */
-.alerta{
-  background:rgba(255,106,0,0.15);
-  border:1px solid rgba(255,106,0,0.4);
-  padding:12px;
-  border-radius:8px;
-  font-size:13px;
-  margin-top:10px;
-  color:#ffb37a;
+/* BOTÃO ESCURO */
+.btn-dark{
+  background:#1f2937;
 }
 
-/* PROVA */
-.prova{
-  font-size:13px;
-  color:#94a3b8;
-  margin-top:10px;
+.btn-dark:hover{
+  background:#111827;
 }
 
 /* DESTAQUE */
@@ -103,22 +95,15 @@ button:hover{
   font-weight:600;
 }
 
-/* DIVISOR */
-.divisor{
-  height:2px;
-  background:linear-gradient(to right,#ff6a00,transparent);
-  margin:15px 0;
-}
-
 /* FAQ */
 .faq h3{
-  font-size:14px;
   margin-top:10px;
+  font-size:14px;
 }
 
 .faq p{
   font-size:13px;
-  color:#94a3b8;
+  color:#ccc;
 }
 
 </style>
@@ -126,45 +111,35 @@ button:hover{
 
 <body>
 
-<div class="header">
-💼 Vagas Home Office
-</div>
-
-<div class="container">
-
 <!-- HERO -->
 <div class="hero">
   <h1>Trabalhe de casa com atendimento online</h1>
   <p>Atividade simples com orientação passo a passo</p>
 </div>
 
-<div class="divisor"></div>
+<div class="container">
 
 <!-- BLOCO 1 -->
 <div class="card">
   <h2>📱 O que você vai fazer</h2>
 
   <ul>
-    <li>Responder mensagens de clientes</li>
-    <li>Auxiliar no suporte</li>
+    <li>Responder mensagens</li>
+    <li>Suporte ao cliente</li>
     <li>Organizar anúncios</li>
   </ul>
-
-  <div class="prova">
-    +1.000 pessoas já participaram
-  </div>
 
   <button onclick="scrollToOferta()">Quero participar</button>
 </div>
 
-<!-- BLOCO 2 -->
-<div class="card">
+<!-- BLOCO 2 LARANJA -->
+<div class="card-orange">
   <h2>📌 Como funciona</h2>
 
   <ul>
     <li>Processo online simples</li>
     <li>Orientação inicial</li>
-    <li>Execução passo a passo</li>
+    <li>Execução guiada</li>
   </ul>
 </div>
 
@@ -178,28 +153,22 @@ button:hover{
     <li>Quer trabalhar online</li>
   </ul>
 
-  <div class="alerta">
-  📌 Inclui etapa de orientação inicial
-  </div>
+  <button class="btn-dark" onclick="scrollToOferta()">Continuar</button>
 </div>
 
-<!-- OFERTA -->
-<div id="oferta" class="card">
+<!-- OFERTA (MAIS LARANJA) -->
+<div id="oferta" class="card-orange">
   <h2>📚 Acesso ao material</h2>
 
   <p>
-  Você terá acesso ao conteúdo com:
+  Conteúdo completo com orientações e passo a passo:
   </p>
 
   <ul>
-    <li>Passo a passo completo</li>
-    <li>Orientações práticas</li>
+    <li>Guia completo</li>
     <li>Atividades iniciais</li>
+    <li>Estrutura pronta</li>
   </ul>
-
-  <div class="alerta">
-  📌 Recomendado para iniciantes
-  </div>
 
   <h2 class="highlight">R$ 9,90</h2>
 
@@ -209,21 +178,18 @@ button:hover{
 <!-- SEGURANÇA -->
 <div class="card">
   <h2>🔒 Segurança</h2>
-  <p>Pagamento seguro e liberação após confirmação.</p>
+  <p>Pagamento seguro com liberação após confirmação.</p>
 </div>
 
 <!-- FAQ -->
 <div class="card faq">
   <h2>❓ Dúvidas</h2>
 
-  <h3>Precisa de experiência?</h3>
+  <h3>Precisa experiência?</h3>
   <p>Não, o material ensina.</p>
 
   <h3>Quando começo?</h3>
   <p>Após acessar o conteúdo.</p>
-
-  <h3>É obrigatório?</h3>
-  <p>Recomendado para iniciar corretamente.</p>
 </div>
 
 </div>
